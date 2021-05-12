@@ -10,6 +10,7 @@ import InnerList from "./Components/InnerList";
 export default class App extends React.Component{
   render(){
   return (
+    <div>
     <Router>
         <Switch>
 
@@ -34,7 +35,7 @@ export default class App extends React.Component{
 
         </Switch>
     </Router>
-
+    </div>
   );
 }
 }
