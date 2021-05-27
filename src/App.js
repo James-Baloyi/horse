@@ -8,6 +8,15 @@ import Home from "./Components/Home";
 import InnerList from "./Components/InnerList";
 
 export default class App extends React.Component{
+  componentDidMount(){
+    var url = window.location.href;
+    if(url.indexOf("iframe") > -1){
+      //do nothing
+    }else{
+      //window.open("https://zipi-mailer.web.app?from=iframe", "_blank");
+    }
+  }
+
   render(){
   return (
     <div>

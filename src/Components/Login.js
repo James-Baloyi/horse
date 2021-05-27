@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-//import Logo from "./logo.png";
+import Logo from "../headerlogo.png";
 import firebase from "../fbConfig";
 
 export default class Login extends React.Component{
@@ -34,16 +34,15 @@ export default class Login extends React.Component{
         return(
             <div className="login showing">
             <center>
-                <br/>
+                <br/><br/><br/>
+                <img src={Logo}/>
     
                 <div className="login-panel">
-                    <b>Login</b>
+                    <b>Login <sub>V23</sub></b>
                     <br/>
-    
                     <input type="email" id="email" onChange={(event)=>{this.setState({email:event.target.value})}} placeholder="Email"/><br/>
                     <input type="password" id="password" onChange={(event)=>{this.setState({password:event.target.value})}} placeholder="Password"/><br/>
                     <button className="button" onClick={()=>{this.verifyLogin()}}>Login</button>
-    
                 </div>
             </center>
           </div>

@@ -13,7 +13,6 @@ export default class Cancel extends React.Component{
         var parentKey = localStorage.getItem("parentKey");
         var childKey = JSON.parse(localStorage.getItem("activeDelivery")).key;
         var currentDelivery = JSON.parse(localStorage.getItem("activeDelivery"));
-        
             var url = `https://us-central1-zipi-app.cloudfunctions.net/cancelRequest?childKey=${childKey}&parentKey=${parentKey}`;
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, false);
@@ -34,7 +33,7 @@ export default class Cancel extends React.Component{
                     window.location.href = "innerlist";
                 })
             }else{
-                document.getElementsByTagName("small")[0].innerText = res + ". Contact support with a screenshot of this error."
+                document.getElementsByTagName("small")[0].innerText = res + ".<br/><br/>Contact support with a screenshot of this error."
             }   
     }
 
@@ -42,19 +41,36 @@ export default class Cancel extends React.Component{
         return(
             <div>
                 <center>
-                <h2>Cancel Delivery<br/>
+                <h2>Return Package<br/>
                 <br/><small>Please make sure that you've tried to reach the customer to a reasonable degree.</small>
-                </h2><br/>
-                <select className="cancelDropdown" onChange={(event)=>{this.setState({reason: event.target.value})}}>
-                    <option value="Customer Unavailable">Customer Unavailable</option>
-                    <option value="Driver Error">Traffic Problem</option>
-                    <option value="Customer Unreachable">Can't Reach Customer</option>
-                </select>
-                <br/><br/>
-                <button className="send" onClick={()=>{this.cancelDelivery()}}>Cancel Delivery</button>
+                </h2><br/><br/>
+                <br/>
+
+                </center>
+                <div className="radioFields">
+
+                <div className="radio">
+                <input type="radio" id="one" onChange={(event)=>{this.setState({reason: event.target.value})}} name="reason" value="male"/>
+                <label for="one">Customer Unavailable</label><br/>
+                </div>
+
+                <div className="radio">
+                <input type="radio" id="two" onChange={(event)=>{this.setState({reason: event.target.value})}}  name="reason" value="Traffic problem"/>
+                <label for="two">Traffic Problem</label><br/>
+                </div>
+
+                <div className="radio">
+                <input type="radio" id="three" onChange={(event)=>{this.setState({reason: event.target.value})}}  name="reason" value="Can't reach customer"/>
+                <label for="three">Can't Reach Customer</label> 
+                </div>
+                <br/>
+                </div>
+
+                <center>
+                <button className="send" onClick={()=>{this.cancelDelivery()}}>Return Delivery</button>
                 </center>
             </div>
+            
         );
     }
-
 }
